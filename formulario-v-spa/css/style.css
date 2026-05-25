@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --bg: #050510;
+  --panel: #0d0d2b;
+  --accent1: #00f0ff;
+  --accent2: #ff00cc;
+  --accent3: #ffe600;
+  --text: #e0f7ff;
+  --text-dim: #6b8b9a;
+  --success: #00ff88;
+  --danger: #ff3355;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-hud: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --radius: 8px;
+}
+
+/* --- RESET & BASE --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: 
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.7)),
+    radial-gradient(circle at top, #10103a 0%, #050510 60%);
+  color: var(--text);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+}
+
+/* GRID EFFECT */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0,240,255,.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,240,255,.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --- CONTAINER SPA --- */
+#app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+}
+
+/* LA CARD PRINCIPAL (Sustituye a #app > div, #regist, #pagina) */
+#app > div {
+  width: 100%;
+  max-width: 500px;
+  background: rgba(13, 13, 43, .95);
+  border: 2px solid var(--accent1);
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: 
+    0 0 15px rgba(0,240,255,.4),
+    0 0 40px rgba(255,0,204,.2);
+  position: relative;
+  overflow: hidden; /* Para que la animación de escaneo no se salga */
+  transition: .3s;
+}
+
+/* CYBER CORNERS */
+#app > div::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 30px;
+  height: 30px;
+  border-top: 4px solid var(--accent2);
+  border-left: 4px solid var(--accent2);
+  z-index: 2;
+}
+
+#app > div::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 30px;
+  height: 30px;
+  border-bottom: 4px solid var(--accent2);
+  border-right: 4px solid var(--accent2);
+  z-index: 2;
+}
+
+/* --- TITLES (Simulando el estilo original) --- */
+#loginForm::before {
+  content: "★ LOGIN ★";
+  display: block;
+  font-family: var(--font-pixel);
+  color: var(--accent2);
+  font-size: 11px;
+  margin-bottom: 35px;
+  text-shadow: 0 0 10px var(--accent2);
+}
+
+#registerForm::before {
+  content: "★ REGISTER ★";
+  display: block;
+  font-family: var(--font-pixel);
+  color: var(--accent2);
+  font-size: 11px;
+  margin-bottom: 35px;
+  text-shadow: 0 0 10px var(--accent2);
+}
+
+#app h1 {
+  font-family: var(--font-pixel);
+  color: var(--accent3);
+  font-size: 14px;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px var(--accent3), 0 0 20px rgba(255,230,0,.5);
+}
+
+/* --- FORM ELEMENTS --- */
+label {
+  display: block;
+  margin-bottom: 8px;
+  margin-top: 18px;
+  font-family: var(--font-hud);
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--accent1);
+  text-align: left;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius);
+  border: 2px solid rgba(0,240,255,.4);
+  background: #08081b;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  transition: .25s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent2);
+  box-shadow: 0 0 10px rgba(255,0,204,.5), 0 0 25px rgba(255,0,204,.2);
+  transform: translateY(-1px);
+}
+
+/* --- BUTTONS (Todos con la lógica del original) --- */
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  transition: .25s;
+  text-transform: uppercase;
+}
+
+#login {
+  background: transparent;
+  color: var(--accent3);
+  border: 2px solid var(--accent3);
+  box-shadow: 0 0 12px rgba(255,230,0,.4);
+}
+
+#login:hover {
+  background: var(--accent3);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--accent3), 0 0 35px rgba(255,230,0,.7);
+}
+
+#register, #registroir {
+  background: transparent;
+  color: var(--accent1);
+  border: 2px solid var(--accent1);
+  box-shadow: 0 0 12px rgba(0,240,255,.4);
+}
+
+#register:hover, #registroir:hover {
+  background: var(--accent1);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--accent1), 0 0 35px var(--accent1);
+}
+
+#volver {
+  background: transparent;
+  color: var(--accent2);
+  border: 2px solid var(--accent2);
+  box-shadow: 0 0 12px rgba(255,0,204,.3);
+}
+
+#volver:hover {
+  background: var(--accent2);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--accent2), 0 0 35px var(--accent2);
+}
+
+#cerrar {
+  background: transparent;
+  color: var(--danger);
+  border: 2px solid var(--danger);
+  box-shadow: 0 0 12px rgba(255,51,85,.3);
+  margin-top: 25px;
+}
+
+#cerrar:hover {
+  background: var(--danger);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--danger), 0 0 35px rgba(255,51,85,.5);
+}
+
+/* --- DASHBOARD SPECIFICS --- */
+#tarjeta {
+  background: linear-gradient(145deg, rgba(0,240,255,.08), rgba(255,0,204,.08));
+  border: 2px solid var(--accent1);
+  border-radius: 18px;
+  padding: 30px 20px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+  box-shadow: 0 0 15px rgba(0,240,255,.25), inset 0 0 20px rgba(255,255,255,.03);
+}
+
+#tarjeta:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 0 20px rgba(0,240,255,.45), 0 0 40px rgba(255,0,204,.2);
+}
+
+/* LÍNEA ANIMADA (Añadida tanto a la card como a la tarjeta) */
+#tarjeta::before, #app > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent1), transparent);
+  animation: scan 3s linear infinite;
+  z-index: 3;
+}
+
+@keyframes scan {
+  100% { left: 100%; }
+}
+
+#imagens {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--accent2);
+  margin-bottom: 20px;
+  box-shadow: 0 0 15px rgba(255,0,204,.6), 0 0 30px rgba(255,0,204,.2);
+  transition: .3s;
+}
+
+#imagens:hover {
+  transform: scale(1.05);
+  border-color: var(--accent1);
+  box-shadow: 0 0 20px rgba(0,240,255,.8), 0 0 40px rgba(0,240,255,.4);
+}
+
+#name {
+  font-family: var(--font-hud);
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: var(--text);
+  text-shadow: 0 0 8px rgba(0,240,255,.5);
+}
+
+/* --- SCROLLBAR & RESPONSIVE --- */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--accent1); border-radius: 10px; }
+::-webkit-scrollbar-track { background: #111; }
+
+@media(max-width:600px){
+  #app > div { padding: 28px 22px; }
+  form::before { font-size: 9px; line-height: 1.6; }
+  button { font-size: 8px; }
+}
